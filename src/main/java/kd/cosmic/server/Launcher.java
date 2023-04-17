@@ -6,6 +6,7 @@ import kd.sdk.annotation.SdkPublic;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Objects;
 
 /**
  * cosmic服务启动器，含默认配置，如需更改请在Application中设置。
@@ -20,6 +21,12 @@ public final class Launcher {
     }
 
     private void setDefault() {
+//        set(ConfigUtils.CLUSTER_NAME_KEY,"开发环境");
+//        set(ConfigUtils.CONFIG_URL_KEY,"192.168.56.1:2181");
+//        set("mc.server.url","http://192.168.56.1:8090/mc");
+//        set("domain.tenantCode","cosmic");
+//        set("lightweightdeploy","false");
+
         set("configAppName", "mservice,web");
         set("webmserviceinone", "true");
         set("file.encoding", "utf-8");
@@ -40,7 +47,7 @@ public final class Launcher {
         set("lightweightdeploy.services", "");
 
         try {
-            String logConfig = new String(Files.readAllBytes(Paths.get(getClass().getResource("log.config.xml").toURI())), "UTF-8");
+            String logConfig = new String(Files.readAllBytes(Paths.get(Objects.requireNonNull(getClass().getResource("log.config.xml")).toURI())), "UTF-8");
             set("log.config", logConfig);
         } catch (Exception e) {
             //ignore

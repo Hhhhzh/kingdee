@@ -59,4 +59,5 @@ public class Demo2 extends AbstractFormPlugin {
         MessageCenterServiceHelper.sendMessage(messageInfo);
         this.getView().showMessage("已发送给管理员");
     }
+
 }

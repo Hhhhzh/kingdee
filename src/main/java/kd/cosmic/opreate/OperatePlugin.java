@@ -13,8 +13,8 @@ public class OperatePlugin extends AbstractOperationServicePlugIn {
      */
     @Override
     public void onPreparePropertys(PreparePropertysEventArgs e) {
-        e.getFieldKeys().add("xhzh_applydate");
-        e.getFieldKeys().add("xhzh_endate");
+        e.getFieldKeys().add("xhzh_datefield");
+        e.getFieldKeys().add("xhzh_enddate");
 //        e.getFieldKeys().add("");
 //        e.getFieldKeys().add("");
 //        e.getFieldKeys().add("");

@@ -9,6 +9,10 @@ import java.util.Date;
 
 public class Myvalidator extends AbstractValidator {
 
+    public String getEntityKey(){
+        return this.entityKey;
+    }
+
     public void initializeConfiguration(){
         super.initializeConfiguration();
 
@@ -32,11 +36,11 @@ public class Myvalidator extends AbstractValidator {
         //逐行检验
         for (ExtendedDataEntity rowDataEntity : this.getDataEntities()){
             rowDataModel.setRowContext(rowDataEntity.getDataEntity());
-            Date xhzhApplydate = (Date) rowDataModel.getValue("xhzh_applydate");
-            Date xhzhEndate = (Date) rowDataModel.getValue("xhzh_endate");
+            Date xhzhApplydate = (Date) rowDataModel.getValue("xhzh_datefield");
+            Date xhzhEndate = (Date) rowDataModel.getValue("xhzh_enddate");
             if (xhzhApplydate.compareTo(xhzhEndate)>0){
                 //校验不通过，出错误提示
-                this.addErrorMessage(rowDataEntity,String.format("申请日期(%)不能晚于结束日期(%)!",simpleDateFormat.format(xhzhApplydate),
+                this.addErrorMessage(rowDataEntity,String.format("申请日期(%s)不能晚于结束日期(%s)!",simpleDateFormat.format(xhzhApplydate),
                         simpleDateFormat.format(xhzhEndate)));
             }
         }

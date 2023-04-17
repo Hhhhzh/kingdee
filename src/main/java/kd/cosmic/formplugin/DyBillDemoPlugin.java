@@ -26,6 +26,7 @@ public class DyBillDemoPlugin extends AbstractFormPlugin {
 
         //查询公司&&部门
         long userMainOrgId = UserServiceHelper.getUserMainOrgId(Long.parseLong(userId));
+
         Map<String, Object> companyfromOrg = OrgUnitServiceHelper.getCompanyfromOrg(userMainOrgId);
 
 
